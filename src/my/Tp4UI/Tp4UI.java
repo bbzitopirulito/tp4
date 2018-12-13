@@ -18,8 +18,9 @@ public class Tp4UI extends javax.swing.JFrame {
      */
     //ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
     ArrayList<Funcionario> funcionarios = new ArrayList();;
-    boolean found1 = false;
-    boolean found2 = false;
+    
+    boolean found = false;
+    
     Funcionario funcionario;
     
     public Tp4UI() {
@@ -269,17 +270,18 @@ public class Tp4UI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 //exclude funcionario
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        found = false;
         jTextField4.setText("");
         int i = 0;
         for(Funcionario funcionario : funcionarios) {
             if(funcionario.getNomecompleto().equals(jTextField2.getText())) {
                 funcionarios.remove(i);
-                found1 = true;
-                jTextField4.setText("Funcionario excluido.");
+                found = true;
+                jTextField4.setText(jTextField2.getText() + " excluido.");
             }
             i++;
         }
-        if(found1 == false) {
+        if(found == false) {
             jTextField4.setText(jTextField2.getText() + " não encontrado");
         }
         jTextField2.setText("");
@@ -287,18 +289,19 @@ public class Tp4UI extends javax.swing.JFrame {
 
 //consult funcionario
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        found = false;
         jTextField4.setText("");
         int i = 0;
-        String jTF4 = jTextField3.getText();
+        String jTF3 = jTextField3.getText();
         for(Funcionario funcionario : funcionarios) {
-            if(funcionario.getNomecompleto().equals(jTF4)) {
-                jTextField4.setText("Funcionário " + jTF4 + " encontrado.");
-                found2 = true;
+            if(funcionario.getNomecompleto().equals(jTF3)) {
+                jTextField4.setText("Funcionário " + jTF3 + " encontrado.");
+                found = true;
             }
             i++;
         }
-        if(funcionarios.contains(jTF4) == false) {
-            jTextField4.setText(jTF4 + " não encontrado");
+        if(found == false) {
+            jTextField4.setText(jTextField3.getText() + " não encontrado");
         }   
         jTextField3.setText("");
     }//GEN-LAST:event_jButton3ActionPerformed

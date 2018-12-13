@@ -13,22 +13,28 @@ public class Funcionario {
     public String nomecompleto;
     public String nome;
     public String sobrenome;
+    private static int counter;
     
     public Funcionario(String nomecompleto){
         this.nomecompleto = nomecompleto;
         nome = nomecompleto.substring(0);
         sobrenome = nomecompleto.substring(1);
+        counter++;
     }
     
-    public String nome(){
+    public int getCounter(){
+        return counter;
+    }            
+    
+    public String getNome(){
         return nome;
     }
     
-    public String sobrenome(){
+    public String getSobrenome(){
         return sobrenome;
     }
     
-    public String nomecompleto(){
+    public String getNomecompleto(){
         return nomecompleto;
     }
 }

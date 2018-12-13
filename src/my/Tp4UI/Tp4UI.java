@@ -16,12 +16,14 @@ public class Tp4UI extends javax.swing.JFrame {
     /**
      * Creates new form Tp4UI
      */
-    public ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
+    //ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
+    ArrayList<Funcionario> funcionarios = new ArrayList();;
     boolean found1 = false;
     boolean found2 = false;
+    Funcionario funcionario;
     
     public Tp4UI() {
-        initComponents();
+        initComponents();        
     }
     
 
@@ -247,38 +249,58 @@ public class Tp4UI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 //add funcionario
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        funcionarios.add(new Funcionario(jTextField1.getText()));
-        jTextField4.setText("Funcionário adicionado");
+        jTextField4.setText("");
+        /*int i = 0;
+        while(i < funcionarios.size()) {
+            if(i < funcionarios.size()) {
+                funcionarios.set(i,new Funcionario(jTextField1.getText()));
+            }
+            i++;
+        }*/
+        funcionario = new Funcionario(jTextField1.getText());
+        funcionarios.add(funcionario);
+        if(funcionarios.contains(funcionario)) {
+            jTextField4.setText(funcionario.getNomecompleto() + " adicionado");
+        }else{
+            jTextField4.setText(jTextField1.getText() + " não adicionado");
+        }
+                
         jTextField1.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 //exclude funcionario
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        jTextField4.setText("");
         int i = 0;
         for(Funcionario funcionario : funcionarios) {
-            if(funcionario.equals(jTextField2.getText())) {
+            if(funcionario.getNomecompleto().equals(jTextField2.getText())) {
                 funcionarios.remove(i);
                 found1 = true;
+                jTextField4.setText("Funcionario excluido.");
             }
             i++;
         }
-        if(found1 = false) {
+        if(found1 == false) {
             jTextField4.setText(jTextField2.getText() + " não encontrado");
         }
+        jTextField2.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
 
 //consult funcionario
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        jTextField4.setText("");
         int i = 0;
+        String jTF4 = jTextField3.getText();
         for(Funcionario funcionario : funcionarios) {
-            if(funcionario.equals(jTextField3.getText())) {
-                jTextField4.setText(jTextField3.getText());
+            if(funcionario.getNomecompleto().equals(jTF4)) {
+                jTextField4.setText("Funcionário " + jTF4 + " encontrado.");
                 found2 = true;
             }
             i++;
         }
-        if(found2 = false) {
-            jTextField4.setText(jTextField2.getText() + " não encontrado");
-        }
+        if(funcionarios.contains(jTF4) == false) {
+            jTextField4.setText(jTF4 + " não encontrado");
+        }   
+        jTextField3.setText("");
     }//GEN-LAST:event_jButton3ActionPerformed
 
 //exit

@@ -11,6 +11,7 @@ package my.Tp4UI;
  */
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.JOptionPane;
 public class Tp4UI extends javax.swing.JFrame {
 
     /**
@@ -261,9 +262,11 @@ public class Tp4UI extends javax.swing.JFrame {
         funcionario = new Funcionario(jTextField1.getText());
         funcionarios.add(funcionario);
         if(funcionarios.contains(funcionario)) {
-            jTextField4.setText(funcionario.getNomecompleto() + " adicionado");
+            //jTextField4.setText(funcionario.getNomecompleto() + " adicionado");
+            JOptionPane.showMessageDialog(null, funcionario.getNomecompleto() + " adicionado", "Info: ", JOptionPane.INFORMATION_MESSAGE);
         }else{
-            jTextField4.setText(jTextField1.getText() + " não adicionado");
+            //jTextField4.setText(jTextField1.getText() + " não adicionado");
+            JOptionPane.showMessageDialog(null, jTextField1.getText() + " não adicionado", "Info: ", JOptionPane.INFORMATION_MESSAGE);
         }
                 
         jTextField1.setText("");
@@ -277,12 +280,14 @@ public class Tp4UI extends javax.swing.JFrame {
             if(funcionario.getNomecompleto().equals(jTextField2.getText())) {
                 funcionarios.remove(i);
                 found = true;
-                jTextField4.setText(jTextField2.getText() + " excluido.");
+                //jTextField4.setText(jTextField2.getText() + " excluido.");
+                JOptionPane.showMessageDialog(null, jTextField2.getText() + " excluido.", "Info: ", JOptionPane.INFORMATION_MESSAGE);                
             }
             i++;
         }
         if(found == false) {
-            jTextField4.setText(jTextField2.getText() + " não encontrado");
+            //jTextField4.setText(jTextField2.getText() + " não encontrado");
+            JOptionPane.showMessageDialog(null, jTextField2.getText() + " não encontrado", "Info: ", JOptionPane.INFORMATION_MESSAGE);
         }
         jTextField2.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -296,12 +301,14 @@ public class Tp4UI extends javax.swing.JFrame {
         for(Funcionario funcionario : funcionarios) {
             if(funcionario.getNomecompleto().equals(jTF3)) {
                 jTextField4.setText("Funcionário " + jTF3 + " encontrado.");
+                JOptionPane.showMessageDialog(null, "Funcionário " + jTF3 + " encontrado.", "Info: ", JOptionPane.INFORMATION_MESSAGE);
                 found = true;
             }
             i++;
         }
         if(found == false) {
             jTextField4.setText(jTextField3.getText() + " não encontrado");
+            JOptionPane.showMessageDialog(null, jTextField3.getText() + " não encontrado", "Info: ", JOptionPane.INFORMATION_MESSAGE);
         }   
         jTextField3.setText("");
     }//GEN-LAST:event_jButton3ActionPerformed

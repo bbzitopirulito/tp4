@@ -52,7 +52,6 @@ public class Tp4UI extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jButton4 = new javax.swing.JButton();
-        jTextField4 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -179,8 +178,6 @@ public class Tp4UI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ler", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Arial Unicode MS", 1, 12))); // NOI18N
-
         jButton4.setText("Sair");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,33 +185,21 @@ public class Tp4UI extends javax.swing.JFrame {
             }
         });
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton4))
-                    .addComponent(jTextField4))
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton4)
+                .addGap(18, 18, 18))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jButton4)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -243,29 +228,18 @@ public class Tp4UI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 //add funcionario
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        jTextField4.setText("");
-        /*int i = 0;
-        while(i < funcionarios.size()) {
-            if(i < funcionarios.size()) {
-                funcionarios.set(i,new Funcionario(jTextField1.getText()));
-            }
-            i++;
-        }*/
         funcionario = new Funcionario(jTextField1.getText());
         funcionarios.add(funcionario);
-        if(funcionarios.contains(funcionario)) {
-            //jTextField4.setText(funcionario.getNomecompleto() + " adicionado");
+        if(funcionarios.contains(funcionario)) {            
             JOptionPane.showMessageDialog(null, funcionario.getNomecompleto() + " adicionado", "Info: ", JOptionPane.INFORMATION_MESSAGE);
-        }else{
-            //jTextField4.setText(jTextField1.getText() + " não adicionado");
+        }else{            
             JOptionPane.showMessageDialog(null, jTextField1.getText() + " não adicionado", "Info: ", JOptionPane.INFORMATION_MESSAGE);
         }
                 
@@ -274,19 +248,17 @@ public class Tp4UI extends javax.swing.JFrame {
 //exclude funcionario
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         found = false;
-        jTextField4.setText("");
+        
         int i = 0;
         for(Funcionario funcionario : funcionarios) {
             if(funcionario.getNomecompleto().equals(jTextField2.getText())) {
                 funcionarios.remove(i);
-                found = true;
-                //jTextField4.setText(jTextField2.getText() + " excluido.");
+                found = true;                
                 JOptionPane.showMessageDialog(null, jTextField2.getText() + " excluido.", "Info: ", JOptionPane.INFORMATION_MESSAGE);                
             }
             i++;
         }
-        if(found == false) {
-            //jTextField4.setText(jTextField2.getText() + " não encontrado");
+        if(found == false) {            
             JOptionPane.showMessageDialog(null, jTextField2.getText() + " não encontrado", "Info: ", JOptionPane.INFORMATION_MESSAGE);
         }
         jTextField2.setText("");
@@ -294,37 +266,30 @@ public class Tp4UI extends javax.swing.JFrame {
 
 //consult funcionario
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        found = false;
-        jTextField4.setText("");
+        found = false;        
         int i = 0;
         String jTF3 = jTextField3.getText();
         for(Funcionario funcionario : funcionarios) {
-            if(funcionario.getNomecompleto().equals(jTF3)) {
-                jTextField4.setText("Funcionário " + jTF3 + " encontrado.");
+            if(funcionario.getNomecompleto().equals(jTF3)) {               
                 JOptionPane.showMessageDialog(null, "Funcionário " + jTF3 + " encontrado.", "Info: ", JOptionPane.INFORMATION_MESSAGE);
                 found = true;
             }
             i++;
         }
         if(found == false) {
-            jTextField4.setText(jTextField3.getText() + " não encontrado");
             JOptionPane.showMessageDialog(null, jTextField3.getText() + " não encontrado", "Info: ", JOptionPane.INFORMATION_MESSAGE);
         }   
         jTextField3.setText("");
     }//GEN-LAST:event_jButton3ActionPerformed
 
-//exit
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+//exit
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -376,6 +341,5 @@ public class Tp4UI extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }

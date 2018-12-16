@@ -252,9 +252,10 @@ public class Tp4UI extends javax.swing.JFrame {
         int i = 0;
         for(Funcionario funcionario : funcionarios) {
             if(funcionario.getNomecompleto().equals(jTextField2.getText())) {
-                funcionarios.remove(i);
-                found = true;                
+                funcionarios.remove(i);                                
                 JOptionPane.showMessageDialog(null, jTextField2.getText() + " excluido.", "Info: ", JOptionPane.INFORMATION_MESSAGE);                
+                found = true;
+                jTextField2.setText("");
             }
             i++;
         }
